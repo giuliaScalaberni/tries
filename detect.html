@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSSample</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+
+    $(function() {
+        var params = {
+            // Request parameters
+            "returnFaceId": "true",
+            "returnFaceLandmarks": "false",
+            "returnFaceAttributes": "glasses",
+        };
+
+        //var obj = '['
+  //   +"iVBORw0KGgoAAAANSUhEUgAAAoAAAAHgCAYAAAA10dzkAAAgAElEQVR4XlS9+Y/l15Hded++ZWYtpKitN0ukSLXGvQAeY/7/X2YMY2C3DRjd02ijrR6KZK25vn0ZfD4nblZNdROSipnvfZd74544ceLE4Juvv7m01tpwOGzj8bi14aBttrs2noz563bY79ugDdp8PmuX86WdT+fWxsN2aefWLoM2bIN23B/bfD7nV9uOnx8N2/l4aoNBa5cznzJpEz57cGrHy7G1dmnDAb/Z2mg4aufzpQ1Ho3Zpg3Y+Xtr5fGrj4aBdBpd2uZzbaDzOZ3mllzYajf3v+/2ujYbjNhgO2ul0aOPRuI2nk7bZbttwOGj707FNJ9M2GQz9+cvl4t+fz16Uf06ns5/hvxtxRfkOro8/gwHXd2znwaWNh8N2uvA7/MiwjUbDdjru22CQa55MJvxqGwwGft4xP9jO7dSGwxGf1i6ni8+CazidTl77bDZrt/e3bTqetNGofu7MvfNheTdcJ98x8F68GZ8Lf8dj4flNJ5O23+1yHfXncLq0YT0/3ijXxns7cave7qiNeMPeD7fFtfIdp3Y+nnPdF35w2IbD1o7Ho9/bhjzLYWuXUTscTm0ymrQ2GrTB4OR783vy/17veDhqgwtvmJ+p51w/cx6053fC8+bfc5+uv8PBdck9HQ77Nh4M2+l88tl7H5dTa6yl+kxWZv/vfJ/PfDRo58GoHU/8O5d4G/Lvzhf/B8/u5HodtCH3yi1zrQNfZhvyLrgP3tdo4uO4eI2tnU9H3+flfHZ/8BkjrvHEe+GzBr5j/j0rnn/6M+GZnlt9Nj86Hntvrs9La5MJa+HzP4N2PJ3bgHU+HLXL8dR4DKxp7tW9Mhq1/X6f98aNXgbtwj3yrs6XdjzzM2PXN/fIe+aCTsdDm0yzfnkseQf5x/XPevOdXPzv/Cxrku/kji6DYRsOsm9YI3wu15LnM...baN6yfj8XuRhGIZGStFEDo9urh65+ttXydmLtfbeBT8fnC4w3ZPUrWFOkBYkZucdRsUkBapWvR7i7L7heh7mKIhoT3ZExcbevyglg6nNmbH2oBGLNeS2+LJcZiGY1xbgzLIUUhxFsdzdw/ezQ+mMBvt/VwcVh3F7OaHZDVexixw82uTmZHdefOad27/8ACkPgqTzVutdl+ff7zX6ifvP0jIylN28DqArRVisUu5rr8rDZcp/AEjed8gp6A4hOTacZcIqTxpehc1Qg7pBL4+fY4uBsgPtckdox84KiXozyN9Y7NSOTX7c8Wy7GY5gal8aptUnp4rxGvWFg5potALQbfuezg3Tq64pyQzxqPyvnJrI5PzuqdX76rnQZNBns3l1L8DR1M8znIzWLyEZ9UCh0z5kUFQ/S3abDBZALCetuvFch7ry9pNa6vFLJOlbxXcjb5LBUHYsadERnn6jk8TfKKt1XvvP9R/Zs//XZ9hMDxYF4raCyaD+fsirCJmK+ZwifupbgbpL6kmwgtKWdhHAPwnbsWNddOi3HrESKZyy5U4VyO7NscRIp6zHF92eRTQJMLnSNq4iSO4hVzdjicrKsDIsO6QWARRaBx3PzmeBKyBvX5201rfbn0DlDVzChUTm1EgAEu8xzX23UdHBH/SFrVEAk2+qNKOtxhzjp+J+bm3F8ZSWdf6g6gf2sAhRT1jNfjhJH1kJ/FmcfrYTpjWgVTuk4ikboFHxLEswUlQcfjIYkXapThfOacRblviOFE3CHneAv1Jb83xywJYi1gUUgY9wpoB9zh3AcgnNyZ+sle8d+PFMWlUc4eb9Md9zrWLgZ0irpSeBM9SxGbpkf616BxbBGRRNiJ3Rb3hY2WryXoKVNTPotjJgjnj+vio1+7VynoFfq1J3AcA1JryW93f7/MZg63T4sNubjbyVQrqzv3jutgD1Dgsp5++Ek9f/K8rlag1Pn8/isvkA6ve6OiRgAAAABJRU5ErkJggg=="+']';
+        var obj='{"url":"https://pixabay.com/get/e83cb70e2df6083ed1534705fb0938c9bd22ffd41db8114191f2c47cae/portrait-1961529_1920.jpg"}';
+
+        $.ajax({
+            url: "https://westus.api.cognitive.microsoft.com/face/v1.0/detect?" + $.param(params),
+            beforeSend: function(xhrObj){
+                // Request headers
+                //xhrObj.setRequestHeader("Content-Type","application/octet-stream");
+                xhrObj.setRequestHeader("Content-Type","application/json");
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","66dfd0519d9144d798e72d8fb4ce03e1");
+            },
+            type: "POST",
+            // Request body
+            data:    obj
+        })
+        .done(function(data) {
+            alert("success");
+        })
+        .fail(function() {
+            alert("error");
+        });
+    });
+</script>
+</body>
+</html>
